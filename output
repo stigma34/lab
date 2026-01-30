@@ -1,0 +1,45 @@
+$ curl -vk https://demo-gw-whoami.microherd.local
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host demo-gw-whoami.microherd.local:443 was resolved.
+* IPv6: (none)
+* IPv4: 192.168.68.240
+*   Trying 192.168.68.240:443...
+* Connected to demo-gw-whoami.microherd.local (192.168.68.240) port 443
+* schannel: disabled automatic use of client certificate
+* using HTTP/1.x
+> GET / HTTP/1.1
+> Host: demo-gw-whoami.microherd.local
+> User-Agent: curl/8.8.0
+> Accept: */*
+>
+* Request completely sent off
+* schannel: remote party requests renegotiation
+* schannel: renegotiating SSL/TLS connection
+* schannel: SSL/TLS connection renegotiated
+< HTTP/1.1 200 OK
+< Content-Length: 439
+< Content-Type: text/plain; charset=utf-8
+< Date: Fri, 30 Jan 2026 18:32:23 GMT
+<
+{ [439 bytes data]
+100   439  100   439    0     0   6470      0 --:--:-- --:--:-- --:--:--  6651Hostname: whoami-b85fc56b4-dzl6r
+IP: 127.0.0.1
+IP: ::1
+IP: 10.42.3.74
+IP: fe80::6419:65ff:fe2b:9f3a
+RemoteAddr: 10.42.4.80:55272
+GET / HTTP/1.1
+Host: demo-gw-whoami.microherd.local
+User-Agent: curl/8.8.0
+Accept: */*
+Accept-Encoding: gzip
+X-Forwarded-For: 10.42.4.1
+X-Forwarded-Host: demo-gw-whoami.microherd.local
+X-Forwarded-Port: 443
+X-Forwarded-Proto: https
+X-Forwarded-Server: traefik-5c9ffdf57-5zt6x
+X-Real-Ip: 10.42.4.1
+
+
+* Connection #0 to host demo-gw-whoami.microherd.local left intact
