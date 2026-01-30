@@ -1,4 +1,3 @@
-root@ranchlet01:~/manifests# kubectl -n gateway-demo get svc whoami -o yaml
 apiVersion: v1
 kind: Service
 metadata:
