@@ -1,20 +1,70 @@
+root@ranchlet01:~/manifests# kubectl -n kube-system get gateway microherd-gw -o yaml
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-  name: demo-gw
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"gateway.networking.k8s.io/v1","kind":"Gateway","metadata":{"annotations":{},"name":"microherd-gw","namespace":"kube-system"},"spec":{"gatewayClassName":"traefik","listeners":[{"hostname":"demo-gw-whoami.microherd.local","name":"https","port":443,"protocol":"HTTPS","tls":{"certificateRefs":[{"kind":"Secret","name":"microherd-wildcard-tls"}],"mode":"Terminate"}}]}}
+  creationTimestamp: "2026-01-30T17:33:03Z"
+  generation: 3
+  name: microherd-gw
   namespace: kube-system
+  resourceVersion: "3066083"
+  uid: b246ff57-b440-408d-b0d6-385e9cacf787
 spec:
   gatewayClassName: traefik
   listeners:
-  - name: https
-    protocol: HTTPS
-    port: 8443 # This was specific to my cluster, yours may be 443 instead
-    hostname: "demo-gw-whoami.microherd.local"
-    allowedRoutes:
+  - allowedRoutes:
       namespaces:
         from: All
+    hostname: demo-gw-whoami.microherd.local
+    name: https
+    port: 8443
+    protocol: HTTPS
     tls:
-      mode: Terminate
       certificateRefs:
-      - kind: Secret
+      - group: ""
+        kind: Secret
         name: microherd-wildcard-tls
+      mode: Terminate
+status:
+  conditions:
+  - lastTransitionTime: "2026-01-30T17:38:49Z"
+    message: Gateway successfully scheduled
+    observedGeneration: 3
+    reason: Accepted
+    status: "True"
+    type: Accepted
+  - lastTransitionTime: "2026-01-30T17:38:49Z"
+    message: Gateway successfully scheduled
+    observedGeneration: 3
+    reason: Programmed
+    status: "True"
+    type: Programmed
+  listeners:
+  - attachedRoutes: 1
+    conditions:
+    - lastTransitionTime: "2026-01-30T17:38:49Z"
+      message: No error found
+      observedGeneration: 3
+      reason: Accepted
+      status: "True"
+      type: Accepted
+    - lastTransitionTime: "2026-01-30T17:38:49Z"
+      message: No error found
+      observedGeneration: 3
+      reason: ResolvedRefs
+      status: "True"
+      type: ResolvedRefs
+    - lastTransitionTime: "2026-01-30T17:38:49Z"
+      message: No error found
+      observedGeneration: 3
+      reason: Programmed
+      status: "True"
+      type: Programmed
+    name: https
+    supportedKinds:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+    - group: gateway.networking.k8s.io
+      kind: GRPCRoute

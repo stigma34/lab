@@ -1,19 +1,54 @@
+root@ranchlet01:~/manifests# kubectl -n gateway-demo get httproute whoami -o yaml
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"gateway.networking.k8s.io/v1","kind":"HTTPRoute","metadata":{"annotations":{},"name":"whoami","namespace":"gateway-demo"},"spec":{"hostnames":["demo-gw-whoami.microherd.local"],"parentRefs":[{"name":"microherd-gw","namespace":"kube-system"}],"rules":[{"backendRefs":[{"name":"whoami","port":80}],"matches":[{"path":{"type":"PathPrefix","value":"/"}}]}]}}
+  creationTimestamp: "2026-01-30T17:36:41Z"
+  generation: 1
   name: whoami
   namespace: gateway-demo
+  resourceVersion: "3066082"
+  uid: b817c277-54f3-4fac-929f-cd75df0cd633
 spec:
-  parentRefs:
-  - name: demo-gw
-    namespace: kube-system
   hostnames:
-  - "demo-gw-whoami.microherd.local"
+  - demo-gw-whoami.microherd.local
+  parentRefs:
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+    name: microherd-gw
+    namespace: kube-system
   rules:
-  - matches:
+  - backendRefs:
+    - group: ""
+      kind: Service
+      name: whoami
+      port: 80
+      weight: 1
+    matches:
     - path:
         type: PathPrefix
         value: /
-    backendRefs:
-    - name: whoami
-      port: 80
+status:
+  parents:
+  - conditions:
+    - lastTransitionTime: "2026-01-30T17:38:49Z"
+      message: ""
+      observedGeneration: 1
+      reason: Accepted
+      status: "True"
+      type: Accepted
+    - lastTransitionTime: "2026-01-30T17:38:49Z"
+      message: ""
+      observedGeneration: 1
+      reason: ResolvedRefs
+      status: "True"
+      type: ResolvedRefs
+    controllerName: traefik.io/gateway-controller
+    parentRef:
+      group: gateway.networking.k8s.io
+      kind: Gateway
+      name: microherd-gw
+      namespace: kube-system
+ s
