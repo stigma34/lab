@@ -1,4 +1,3 @@
-root@ranchlet01:~/manifests# kubectl -n gateway-demo get httproute whoami -o yaml
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
