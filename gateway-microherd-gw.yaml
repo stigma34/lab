@@ -1,4 +1,3 @@
-root@ranchlet01:~/manifests# kubectl -n kube-system get gateway microherd-gw -o yaml
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
