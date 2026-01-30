@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2026-01-30T17:31:46Z"
+  labels:
+    app: whoami
+  name: whoami
+  namespace: gateway-demo
+  resourceVersion: "3063450"
+  uid: d449852e-1382-44b9-8c5c-59eb805a5490
+spec:
+  clusterIP: 10.43.30.122
+  clusterIPs:
+  - 10.43.30.122
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80s
+  selector:
+    app: whoami
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

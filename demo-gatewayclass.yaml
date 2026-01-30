@@ -1,0 +1,21 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"gateway.networking.k8s.io/v1","kind":"GatewayClass","metadata":{"annotations":{},"name":"traefik"},"spec":{"controllerName":"traefik.io/gateway-controller"}}
+  creationTimestamp: "2026-01-30T16:30:54Z"
+  generation: 1
+  name: traefik
+  resourceVersion: "3059576"
+  uid: e75c0a56-76ff-4b9a-9a75-c973067cfa05
+spec:
+  controllerName: traefik.io/gateway-controller
+status:
+  conditions:
+  - lastTransitionTime: "2026-01-30T17:21:31Z"
+    message: Handled by Traefik controller
+    observedGeneration: 1
+    reason: Handled
+    status: "True"
+    type: Accepted
